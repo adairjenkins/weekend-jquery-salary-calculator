@@ -8,6 +8,7 @@ function handleReady() {
      console.log('jquery');
     // 
      $('#submitButton').on('click', addEmployee);
+
  }
 
  function addEmployee() {
@@ -18,7 +19,7 @@ function handleReady() {
         lastName: $('#lastName').val(),
         idNum: Number($('#idNum').val()),
         title: $('#title').val(),
-        salary: $('#salary').val()
+        salary: Number($('#salary').val())
     }
     // add employee to employee array
     employees.push(employee);
@@ -29,13 +30,13 @@ function handleReady() {
     $('#title').val('');
     $('#salary').val('');
 
-    updateDOM()
+    updateDOM();
  }
 
  function updateDOM() {
-    console.log('updateDOM')
+    console.log('updateDOM');
 
-    $('#tableBody').empty()
+    $('#tableBody').empty();
 
     for (let employee of employees) {
         $('#tableBody').append(`<tr>
@@ -45,5 +46,20 @@ function handleReady() {
             <td>${employee.title}</td>
             <td>${employee.salary}</td>
         </tr>`)
+    }   
+    // call function to update total monthly cost
+    calculateTotalMonthly();
+ }
+
+ function calculateTotalMonthly() {
+    let annualTotal = 0;
+    // sum employee salaries
+    for (let employee of employees) {
+        annualTotal += employee.salary;
     }
+    // convert annual to total monthly cost
+    totalMonthly = annualTotal/12;
+    // update DOM with new total
+    $('#totalMonthly').empty();
+    $('#totalMonthly').append(totalMonthly);
  }

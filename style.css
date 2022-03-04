@@ -1,0 +1,11 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(225, 225, 225);
+}
+
+table, th, td {
+    border: 1px solid;
+  }

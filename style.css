@@ -9,3 +9,7 @@ body {
 table, th, td {
     border: 1px solid;
   }
+
+.highlight {
+    background-color:rgb(184, 52, 52);
+}

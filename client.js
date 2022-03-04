@@ -14,7 +14,7 @@ function handleReady() {
  function addEmployee() {
     console.log('addEmployee');
     // create new employee object from inputs
-    const employee = {
+    const newEmployee = {
         firstName: $('#firstName').val(),
         lastName: $('#lastName').val(),
         idNum: Number($('#idNum').val()),
@@ -22,7 +22,7 @@ function handleReady() {
         salary: Number($('#salary').val())
     }
     // add employee to employee array
-    employees.push(employee);
+    employees.push(newEmployee);
     // empty input fields
     $('#firstName').val('');
     $('#lastName').val('');
@@ -60,6 +60,11 @@ function handleReady() {
     // convert annual to total monthly cost
     totalMonthly = annualTotal/12;
     // update DOM with new total
+    if (totalMonthly > 20000) {
+        $('#displayTotal').addClass("highlight");
+    }
+    
     $('#totalMonthly').empty();
     $('#totalMonthly').append(totalMonthly);
+
  }

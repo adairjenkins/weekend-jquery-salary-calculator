@@ -8,11 +8,13 @@ function handleReady() {
      console.log('jquery');
     // 
      $('#submitButton').on('click', addEmployee);
+     //
+     $('#tableBody').on('click', '.delete', deleteEmployee);
 
  }
 
  function addEmployee() {
-    console.log('addEmployee');
+    console.log('addEmployee func');
     // create new employee object from inputs
     const newEmployee = {
         firstName: $('#firstName').val(),
@@ -30,14 +32,14 @@ function handleReady() {
     $('#title').val('');
     $('#salary').val('');
 
-    updateDOM();
+    render();
  }
 
- function updateDOM() {
-    console.log('updateDOM');
+ function render() {
+    console.log('render func');
 
     $('#tableBody').empty();
-
+    // fill in table with employees from employee array and add delete button with employee idNum id
     for (let employee of employees) {
         $('#tableBody').append(`<tr>
             <td>${employee.firstName}</td>
@@ -45,13 +47,15 @@ function handleReady() {
             <td>${employee.idNum}</td>
             <td>${employee.title}</td>
             <td>${employee.salary}</td>
+            <td id="${employee.idNum}" class="delete button"><button>DELETE</button></td>
         </tr>`)
     }   
     // call function to update total monthly cost
-    calculateTotalMonthly();
+    updateTotalMonthly();
  }
 
- function calculateTotalMonthly() {
+ function updateTotalMonthly() {
+    console.log('updateTotalMonthly func')
     let annualTotal = 0;
     // sum employee salaries
     for (let employee of employees) {
@@ -59,12 +63,17 @@ function handleReady() {
     }
     // convert annual to total monthly cost
     totalMonthly = annualTotal/12;
-    // update DOM with new total
+    // add highligh class if total monthly exceeds 20000
     if (totalMonthly > 20000) {
         $('#displayTotal').addClass("highlight");
     }
-    
+    // update DOM with new total
     $('#totalMonthly').empty();
     $('#totalMonthly').append(totalMonthly);
+ }
 
+ function deleteEmployee() {
+    console.log('deleteEmployee func'); 
+    // 
+    thisID = $(this).attr('id');
  }

@@ -6,13 +6,15 @@ let employees = [];
 
 function handleReady() {
      console.log('jquery');
-    // 
+
      $('#submitButton').on('click', addEmployee);
-     //
+     
      $('#tableBody').on('click', '.delete', deleteEmployee);
 
  }
 
+ // creates new employee object from input fields, adds it to employees array,
+ // calls render to update DOM
  function addEmployee() {
     console.log('addEmployee func');
     // create new employee object from inputs
@@ -36,6 +38,9 @@ function handleReady() {
     render();
  }
 
+ // iterates through employees array and creates a row with appropriate data
+ // fields and delete button for each employee; calls updateTotalMonthly to
+ // handle update for total monthly
  function render() {
     console.log('render func');
 
@@ -55,6 +60,9 @@ function handleReady() {
     updateTotalMonthly();
  }
 
+ // calculates sum of annual employee salaries, converts annual total to
+ // monthly, adds highlight class if total exceeds 20000, and updates DOM with
+ // new total monthly
  function updateTotalMonthly() {
     console.log('updateTotalMonthly func')
     let annualTotal = 0;
@@ -73,6 +81,8 @@ function handleReady() {
     $('#totalMonthly').append(totalMonthly);
  }
 
+ // targets employee based on delete button clicked, removes employee from
+ // employees array; calls render to update DOM and total monthly
  function deleteEmployee() {
     console.log('deleteEmployee func'); 
     // find idNum for targeted employee using delete button's id

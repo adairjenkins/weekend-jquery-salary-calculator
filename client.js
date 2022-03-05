@@ -40,7 +40,7 @@ function handleReady() {
     console.log('render func');
 
     $('#tableBody').empty();
-    // fill in table with employees from employee array and add delete button with employee idNum id
+    // fill in table with employees from employee array and add delete button with id corresponding to employee idNum
     for (let employee of employees) {
         $('#tableBody').append(`<tr>
             <td>${employee.firstName}</td>
@@ -62,8 +62,8 @@ function handleReady() {
     for (let employee of employees) {
         annualTotal += employee.salary;
     }
-    // convert annual to total monthly cost
-    totalMonthly = annualTotal/12;
+    // convert annual to total monthly cost rounded to two decimal places
+    totalMonthly = (annualTotal/12).toFixed(2);
     // add highligh class if total monthly exceeds 20000
     if (totalMonthly > 20000) {
         $('#displayTotal').addClass("highlight");

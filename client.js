@@ -35,6 +35,7 @@ function handleReady() {
     $('#title').val('');
     $('#salary').val('');
 
+    sort();
     render();
  }
 
@@ -96,4 +97,20 @@ function handleReady() {
     }
     // update DOM
     render()
+ }
+
+ // write a function that sorts table alphabetically by last name
+ function sort() {
+    console.log('sort func');
+    employees.sort( function(emp1, emp2) {
+        emp1 = emp1.lastName.toLowerCase();
+        emp2 = emp2.lastName.toLowerCase();
+        if (emp1 > emp2) 
+            return 1;
+        else if (emp1 < emp2) 
+            return -1;
+        else return 0;
+        }
+    )
+    console.log(employees);
  }

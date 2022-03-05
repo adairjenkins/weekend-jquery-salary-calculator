@@ -14,7 +14,8 @@ function handleReady() {
  }
 
  // creates new employee object from input fields, adds it to employees array,
- // calls render to update DOM
+ // calls sort to sort employees alphabetically by last name; calls render to 
+ // update DOM
  function addEmployee() {
     console.log('addEmployee func');
     // create new employee object from inputs
@@ -53,7 +54,7 @@ function handleReady() {
             <td>${employee.lastName}</td>
             <td>${employee.idNum}</td>
             <td>${employee.title}</td>
-            <td>${employee.salary}</td>
+            <td>${employee.salary.toLocaleString("en-US")}</td>
             <td id="${employee.idNum}" class="delete button"><button>DELETE</button></td>
         </tr>`)
     }   
@@ -71,15 +72,16 @@ function handleReady() {
     for (let employee of employees) {
         annualTotal += employee.salary;
     }
-    // convert annual to total monthly cost rounded to two decimal places
-    totalMonthly = (annualTotal/12).toFixed(2);
+    // convert annual to total monthly cost
+    totalMonthly = (annualTotal/12)
     // add highligh class if total monthly exceeds 20000
     if (totalMonthly > 20000) {
         $('#displayTotal').addClass("highlight");
     }
-    // update DOM with new total
+    
     $('#totalMonthly').empty();
-    $('#totalMonthly').append(totalMonthly);
+    // update DOM with new total formatted with commas and two decimal places
+    $('#totalMonthly').append(totalMonthly.toLocaleString("en-US", {style: 'currency', currency: 'USD'}));
  }
 
  // targets employee based on delete button clicked, removes employee from
@@ -99,10 +101,12 @@ function handleReady() {
     render()
  }
 
- // write a function that sorts table alphabetically by last name
+ // sorts table alphabetically by last name
+ // -----> want to improve by adding switch statement depending on which heading tab is clicked
  function sort() {
     console.log('sort func');
     employees.sort( function(emp1, emp2) {
+        //converts all letters to lowercase before comparing
         emp1 = emp1.lastName.toLowerCase();
         emp2 = emp2.lastName.toLowerCase();
         if (emp1 > emp2) 
@@ -112,5 +116,4 @@ function handleReady() {
         else return 0;
         }
     )
-    console.log(employees);
  }

@@ -19,10 +19,11 @@ function handleReady() {
     const newEmployee = {
         firstName: $('#firstName').val(),
         lastName: $('#lastName').val(),
-        idNum: Number($('#idNum').val()),
+        idNum: ($('#idNum').val()),
         title: $('#title').val(),
         salary: Number($('#salary').val())
     }
+    console.log('add:', newEmployee);
     // add employee to employee array
     employees.push(newEmployee);
     // empty input fields
@@ -74,6 +75,15 @@ function handleReady() {
 
  function deleteEmployee() {
     console.log('deleteEmployee func'); 
-    // 
+    // find idNum for targeted employee using delete button's id
     thisID = $(this).attr('id');
+    // remove selected employee from employees array
+    for (let i=0; i < employees.length; i++) {
+        if (employees[i].idNum == thisID) {
+            console.log('remove:', employees[i]);
+            employees.splice(i, 1);
+        }
+    }
+    // update DOM
+    render()
  }

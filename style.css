@@ -1,5 +1,5 @@
 * {
-    font-family: sans-serif;
+    font-family: 'roboto',serif;
     margin: 0;
     padding: 0;
 }
@@ -7,6 +7,18 @@
 body {
     background-color: #EEECE8;
     margin:30px;
+}
+
+header {
+    margin-bottom: 40px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+#inputField {
+    margin-bottom: 30px;
 }
 
 #inputs {
@@ -45,9 +57,14 @@ tr:nth-child(even) {
 }
 
 #displayTotal {
-    text-align: right;
+    margin:30px;
+    padding:10px;
+    text-align: center;
+    width:300px;
+    display: block;
+    float: right;
 }
 
 .highlight {
-    background-color:rgb(184, 52, 52);
+    background-color:rgb(193, 68, 68);
 }

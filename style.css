@@ -86,3 +86,7 @@ tr:nth-child(even) {
 .highlightLabel {
     background-color: #8c9aa4;
 }
+
+.columnLabel:hover {
+    background-color: #8c9aa4;
+}

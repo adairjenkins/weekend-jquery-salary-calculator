@@ -2,12 +2,15 @@ console.log('js');
 
 $(document).ready(handleReady);
 
-let employees = [{firstName: 'Maggie', lastName:'Jenkins', idNum: '163829', title: 'me', salary: '65000'},
-                 {firstName: 'louie', lastName:'jenkins', idNum: '4509 ', title: 'dog', salary: '1'}, 
-                 {firstName: 'Francis', lastName:'Jenkins', idNum: '4509', title: 'cat', salary: '100000'},
-                 {firstName: 'megan', lastName:'Kirschner', idNum: '6188', title: 'bae', salary: '650000'},
-                 {firstName: 'Chloe', lastName:'Barim', idNum: '10', title: 'kid', salary: '20'},
-                 {firstName: 'Sasha', lastName:'barim', idNum: '8', title: 'kid', salary: '20'}];
+let employees = [];
+
+// pre-populated array for testing - requires uncommenting ln 25 to view
+// let employees = [{firstName: 'Maggie', lastName:'Jenkins', idNum: '163829', title: 'me', salary: '65000'},
+//                  {firstName: 'louie', lastName:'jenkins', idNum: '4509 ', title: 'dog', salary: '0'}, 
+//                  {firstName: 'Francis', lastName:'Jenkins', idNum: '4509', title: 'cat', salary: '100000'},
+//                  {firstName: 'megan', lastName:'Kirschner', idNum: '6188', title: 'partner', salary: '650000'},
+//                  {firstName: 'Chloe', lastName:'Barim', idNum: '10', title: 'kid', salary: '20'},
+//                  {firstName: 'Sasha', lastName:'barim', idNum: '8', title: 'kid', salary: '20'}];
 
 function handleReady() {
      console.log('jquery');
@@ -18,10 +21,8 @@ function handleReady() {
 
     $('#tableHeader').on('click', '.columnLabel', sort);
 
-    $('.columnLabel').mouseover(highlightLabel);
-
-     //update DOM with preloaded employee array for testing
-     render()
+    //  //update DOM with preloaded employee array for testing
+    //  render()
  }
 
  // creates new employee object from input fields, adds it to employees array,
@@ -55,7 +56,7 @@ function handleReady() {
  // handle update for total monthly
  function render() {
     console.log('render func');
-    // set all column labels to neutral background color
+    // undo any previous highlight and set all column labels to same neutral background color
     $('.columnLabel').removeClass("highlightLabel");
 
     $('#tableBody').empty();
@@ -177,7 +178,7 @@ function sort() {
             });
             break;
     }
-    // update DOM
+    // update DOM & undo any previous highlighting
     render()
     // highlight sorted column label 
     $(this).addClass("highlightLabel");
@@ -190,5 +191,4 @@ function highlightLabel() {
 
 }
 
- /* add alert if duplicate ids are entered
- highlight sorted column label */
+// would like to add additional functionality to prohibit use of duplicate ID's

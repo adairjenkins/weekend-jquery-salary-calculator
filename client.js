@@ -16,6 +16,8 @@ function handleReady() {
      
      $('#tableBody').on('click', '.delete', deleteEmployee);
 
+    $('#tableHeader').on('click', '.columnLabel', sort);
+
      //update DOM with preloaded employee array for testing
      render()
  }
@@ -43,7 +45,6 @@ function handleReady() {
     $('#titleInput').val('');
     $('#salaryInput').val('');
 
-    sort();
     render();
  }
 
@@ -114,8 +115,8 @@ function handleReady() {
 
  // sorts table alphabetically by last name
  // -----> want to improve by adding switch statement depending on which heading tab is clicked
- function sort() {
-    console.log('sort func');
+ function sortOld() {
+    console.log('sortOld func');
     employees.sort( function(emp1, emp2) {
         //converts all letters to lowercase before comparing
         emp1 = emp1.lastName.toLowerCase();
@@ -129,6 +130,12 @@ function handleReady() {
     )
  }
 
+// sort array by either first or last name, id, title, or salary depending on click event
+function sort() {
+    console.log('sort func');
+    columnLabel = $(this).attr('id');
+    console.log(columnLabel);
+}
 
  /* TO-DO :
  * add switch statement to sort based on which heading is clicked

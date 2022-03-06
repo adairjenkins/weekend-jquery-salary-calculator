@@ -18,7 +18,7 @@ function handleReady() {
 
     $('#tableHeader').on('click', '.columnLabel', sort);
 
-    //$('.columnLabel').mouseover(highlightLabel);
+    $('.columnLabel').mouseover(highlightLabel);
 
      //update DOM with preloaded employee array for testing
      render()
@@ -55,6 +55,8 @@ function handleReady() {
  // handle update for total monthly
  function render() {
     console.log('render func');
+    // set all column labels to neutral background color
+    $('.columnLabel').removeClass("highlightLabel");
 
     $('#tableBody').empty();
     // fill in table with employees from employee array and add delete button with id corresponding to employee idNum
@@ -121,9 +123,6 @@ function sort() {
     console.log('sort func');
     // store clicked label id in columnLabel
     columnLabel = $(this).attr('id');
-    console.log('highlight me!!');
-    console.log($(this).attr('id'));
-    $(this).addClass("highlightLabel");
     // sort according to whichever label triggered click event
     switch (columnLabel) {
         case 'firstNameLabel':
@@ -178,7 +177,10 @@ function sort() {
             });
             break;
     }
+    // update DOM
     render()
+    // highlight sorted column label 
+    $(this).addClass("highlightLabel");
 }
 
 function highlightLabel() {

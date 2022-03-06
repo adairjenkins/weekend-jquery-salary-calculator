@@ -21,10 +21,20 @@ h2 {
     margin-bottom: 30px;
 }
 
+.input {
+    text-indent: 4px;
+    height: 25px;
+}
+
 #inputs {
     width: 90%;
     display: flex;
     justify-content: space-between;
+}
+
+#submitButton {
+    padding-left:10px;
+    padding-right:10px;
 }
 
 table, th, td {

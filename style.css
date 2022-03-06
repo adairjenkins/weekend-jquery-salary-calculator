@@ -53,6 +53,10 @@ thead {
     background-color: #A2B3BF;
 }
 
+.columnLabel {
+    cursor: default;
+}
+
 tr:nth-child(even) {
     background-color: #C7CBCB;
 }
@@ -77,4 +81,8 @@ tr:nth-child(even) {
 
 .highlight {
     background-color:rgb(193, 68, 68);
+}
+
+.highlightLabel {
+    background-color: #8c9aa4;
 }

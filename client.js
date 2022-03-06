@@ -5,7 +5,7 @@ $(document).ready(handleReady);
 let employees = [{firstName: 'Maggie', lastName:'Jenkins', idNum: '163829', title: 'me', salary: '65000'},
                  {firstName: 'louie', lastName:'jenkins', idNum: '4509 ', title: 'dog', salary: '1'}, 
                  {firstName: 'Francis', lastName:'Jenkins', idNum: '4509', title: 'cat', salary: '100000'},
-                 {firstName: 'megan', lastName:'Kirschner', idNum: '6188', title: 'bae', salary: '45000'},
+                 {firstName: 'megan', lastName:'Kirschner', idNum: '6188', title: 'bae', salary: '650000'},
                  {firstName: 'Chloe', lastName:'Barim', idNum: '10', title: 'kid', salary: '20'},
                  {firstName: 'Sasha', lastName:'barim', idNum: '8', title: 'kid', salary: '20'}];
 
@@ -17,6 +17,8 @@ function handleReady() {
      $('#tableBody').on('click', '.delete', deleteEmployee);
 
     $('#tableHeader').on('click', '.columnLabel', sort);
+
+    //$('.columnLabel').mouseover(highlightLabel);
 
      //update DOM with preloaded employee array for testing
      render()
@@ -119,6 +121,9 @@ function sort() {
     console.log('sort func');
     // store clicked label id in columnLabel
     columnLabel = $(this).attr('id');
+    console.log('highlight me!!');
+    console.log($(this).attr('id'));
+    $(this).addClass("highlightLabel");
     // sort according to whichever label triggered click event
     switch (columnLabel) {
         case 'firstNameLabel':
@@ -176,6 +181,12 @@ function sort() {
     render()
 }
 
+function highlightLabel() {
+    console.log('highlight me!!');
+    console.log($(this).attr('id'));
+    $(this).addClass("highlightLabel");
+
+}
 
  /* add alert if duplicate ids are entered
  highlight sorted column label */

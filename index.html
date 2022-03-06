@@ -16,12 +16,14 @@
     <main>
         <div id="inputField">
             <h2>Add Employee</h2>
-            <input type="text" placeholder="FIRST NAME" id="firstName" class="input"/>
-            <input type="text" placeholder="LAST NAME" id="lastName" class="input"/>
-            <input type="text" placeholder="ID" id="idNum" class="input"/>
-            <input type="text" placeholder="TITLE" id="title" class="input"/>
-            <input type="text" placeholder="ANNUAL SALARY" id="salary" class="input"/>
-            <button id="submitButton" class="button">SUBMIT</button>
+            <div id="inputs">
+                <input type="text" placeholder="FIRST NAME" id="firstNameInput" class="input"/>
+                <input type="text" placeholder="LAST NAME" id="lastNameInput" class="input"/>
+                <input type="text" placeholder="ID" id="idNumInput" class="input"/>
+                <input type="text" placeholder="TITLE" id="titleInput" class="input"/>
+                <input type="text" placeholder="ANNUAL SALARY" id="salaryInput" class="input"/>
+                <button id="submitButton" class="button">SUBMIT</button>
+            </div>
         </div>
         <div id="outputField">
             <h2>Employees</h2>
@@ -33,12 +35,15 @@
                         <th>ID</th>
                         <th>Job Title</th>
                         <th>Annual Salary</th>
+                        <th class="delete"></th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
                 </tbody>
             </table>
-            <h2 id="displayTotal">Total Monthly: <span id="totalMonthly">0</span></h2>
+            <div id="displayTotal">
+                <h2>Total Monthly: <span id="totalMonthly">0</span></h2>
+            </div>
         </div>
     </main>
 </body>

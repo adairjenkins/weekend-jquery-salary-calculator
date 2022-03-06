@@ -2,7 +2,12 @@ console.log('js');
 
 $(document).ready(handleReady);
 
-let employees = []; 
+let employees = [{firstName: 'Maggie', lastName:'Jenkins', idNum: '163829', title: 'me', salary: '65000'},
+                 {firstName: 'louie', lastName:'jenkins', idNum: '4509 ', title: 'dog', salary: '1'}, 
+                 {firstName: 'Francis', lastName:'Jenkins', idNum: '4509', title: 'cat', salary: '100000'},
+                 {firstName: 'megan', lastName:'Kirschner', idNum: '6188', title: 'bae', salary: '45000'},
+                 {firstName: 'Chloe', lastName:'Barim', idNum: '10', title: 'kid', salary: '20'},
+                 {firstName: 'Sasha', lastName:'barim', idNum: '8', title: 'kid', salary: '20'}];
 
 function handleReady() {
      console.log('jquery');
@@ -11,6 +16,8 @@ function handleReady() {
      
      $('#tableBody').on('click', '.delete', deleteEmployee);
 
+     //update DOM with preloaded employee array for testing
+     render()
  }
 
  // creates new employee object from input fields, adds it to employees array,
@@ -20,21 +27,21 @@ function handleReady() {
     console.log('addEmployee func');
     // create new employee object from inputs
     const newEmployee = {
-        firstName: $('#firstName').val(),
-        lastName: $('#lastName').val(),
-        idNum: ($('#idNum').val()),
-        title: $('#title').val(),
-        salary: Number($('#salary').val())
+        firstName: $('#firstNameInput').val(),
+        lastName: $('#lastNameInput').val(),
+        idNum: ($('#idNumInput').val()),
+        title: $('#titleInput').val(),
+        salary: Number($('#salaryInput').val())
     }
     console.log('add:', newEmployee);
     // add employee to employee array
     employees.push(newEmployee);
     // empty input fields
-    $('#firstName').val('');
-    $('#lastName').val('');
-    $('#idNum').val('');
-    $('#title').val('');
-    $('#salary').val('');
+    $('#firstNameInput').val('');
+    $('#lastNameInput').val('');
+    $('#idNumInput').val('');
+    $('#titleInput').val('');
+    $('#salaryInput').val('');
 
     sort();
     render();
@@ -50,11 +57,11 @@ function handleReady() {
     // fill in table with employees from employee array and add delete button with id corresponding to employee idNum
     for (let employee of employees) {
         $('#tableBody').append(`<tr>
-            <td>${employee.firstName}</td>
-            <td>${employee.lastName}</td>
-            <td>${employee.idNum}</td>
-            <td>${employee.title}</td>
-            <td>${employee.salary.toLocaleString("en-US")}</td>
+            <td class="firstNamCol">${employee.firstName}</td>
+            <td class="lastNameCol">${employee.lastName}</td>
+            <td class="idCol">${employee.idNum}</td>
+            <td class="titleCol">${employee.title}</td>
+            <td class="salaryCol">$${employee.salary.toLocaleString("en-US")}</td>
             <td id="${employee.idNum}" class="delete button"><button>DELETE</button></td>
         </tr>`)
     }   
@@ -70,13 +77,17 @@ function handleReady() {
     let annualTotal = 0;
     // sum employee salaries
     for (let employee of employees) {
-        annualTotal += employee.salary;
+        annualTotal += Number(employee.salary); // only need Number temporarily while working with test array
     }
     // convert annual to total monthly cost
     totalMonthly = (annualTotal/12)
     // add highligh class if total monthly exceeds 20000
     if (totalMonthly > 20000) {
         $('#displayTotal').addClass("highlight");
+    }
+    // remove highlight if total is no longer above $20,000
+    else {
+        $('#displayTotal').removeClass("highlight")
     }
     
     $('#totalMonthly').empty();
@@ -117,3 +128,9 @@ function handleReady() {
         }
     )
  }
+
+
+ /* TO-DO :
+ * add switch statement to sort based on which heading is clicked
+ * add click events for table headings
+ * add alert if duplicate ids are entered*/

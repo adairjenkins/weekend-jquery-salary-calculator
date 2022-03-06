@@ -113,31 +113,69 @@ function handleReady() {
     render()
  }
 
- // sorts table alphabetically by last name
- // -----> want to improve by adding switch statement depending on which heading tab is clicked
- function sortOld() {
-    console.log('sortOld func');
-    employees.sort( function(emp1, emp2) {
-        //converts all letters to lowercase before comparing
-        emp1 = emp1.lastName.toLowerCase();
-        emp2 = emp2.lastName.toLowerCase();
-        if (emp1 > emp2) 
-            return 1;
-        else if (emp1 < emp2) 
-            return -1;
-        else return 0;
-        }
-    )
- }
-
-// sort array by either first or last name, id, title, or salary depending on click event
+// sort employees array according to which column label triggered the click
+// event and highlight corresponding column label
 function sort() {
     console.log('sort func');
+    // store clicked label id in columnLabel
     columnLabel = $(this).attr('id');
-    console.log(columnLabel);
+    // sort according to whichever label triggered click event
+    switch (columnLabel) {
+        case 'firstNameLabel':
+            console.log('sort by first name');
+            employees.sort( function(emp1, emp2) {
+                //converts all letters to lowercase before comparing
+                emp1 = emp1.firstName.toLowerCase();
+                emp2 = emp2.firstName.toLowerCase();
+                if (emp1 > emp2) 
+                    return 1;
+                else if (emp1 < emp2) 
+                    return -1;
+                else return 0;
+                })
+            break;
+        case 'lastNameLabel':
+            console.log('sort by last name');
+            employees.sort( function(emp1, emp2) {
+                //converts all letters to lowercase before comparing
+                emp1 = emp1.lastName.toLowerCase();
+                emp2 = emp2.lastName.toLowerCase();
+                if (emp1 > emp2) 
+                    return 1;
+                else if (emp1 < emp2) 
+                    return -1;
+                else return 0;
+                })
+            break;
+        case 'idLabel':
+            console.log('sort by id number');
+            employees.sort( function(emp1, emp2) {
+                return emp1.idNum - emp2.idNum;
+            });
+            break;
+        case 'titleLabel':
+            console.log('sort by title');
+            employees.sort( function(emp1, emp2) {
+                //converts all letters to lowercase before comparing
+                emp1 = emp1.title.toLowerCase();
+                emp2 = emp2.title.toLowerCase();
+                if (emp1 > emp2) 
+                    return 1;
+                else if (emp1 < emp2) 
+                    return -1;
+                else return 0;
+                });
+            break;
+        case 'salaryLabel': 
+            console.log('sort by salary')
+            employees.sort( function(emp1, emp2) {
+                return emp1.salary - emp2.salary;
+            });
+            break;
+    }
+    render()
 }
 
- /* TO-DO :
- * add switch statement to sort based on which heading is clicked
- * add click events for table headings
- * add alert if duplicate ids are entered*/
+
+ /* add alert if duplicate ids are entered
+ highlight sorted column label */

@@ -4,7 +4,7 @@ $(document).ready(handleReady);
 
 let employees = [];
 
-// pre-populated array for testing - requires uncommenting ln 25 to view
+//pre-populated array for testing - requires uncommenting ln 25 to view
 // let employees = [{firstName: 'Maggie', lastName:'Jenkins', idNum: '163829', title: 'me', salary: '65000'},
 //                  {firstName: 'louie', lastName:'jenkins', idNum: '4509 ', title: 'dog', salary: '0'}, 
 //                  {firstName: 'Francis', lastName:'Jenkins', idNum: '4509', title: 'cat', salary: '100000'},
@@ -21,7 +21,7 @@ function handleReady() {
 
     $('#tableHeader').on('click', '.columnLabel', sort);
 
-    //  //update DOM with preloaded employee array for testing
+    // //  //update DOM with preloaded employee array for testing
     //  render()
  }
 
@@ -182,13 +182,6 @@ function sort() {
     render()
     // highlight sorted column label 
     $(this).addClass("highlightLabel");
-}
-
-function highlightLabel() {
-    console.log('highlight me!!');
-    console.log($(this).attr('id'));
-    $(this).addClass("highlightLabel");
-
 }
 
 // would like to add additional functionality to prohibit use of duplicate ID's

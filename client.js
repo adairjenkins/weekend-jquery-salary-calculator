@@ -86,7 +86,7 @@ function handleReady() {
         annualTotal += Number(employee.salary); // only need Number temporarily while working with test array
     }
     // convert annual to total monthly cost
-    totalMonthly = (annualTotal/12)
+    let totalMonthly = (annualTotal/12)
     // add highligh class if total monthly exceeds 20000
     if (totalMonthly > 20000) {
         $('#displayTotal').addClass("highlight");
@@ -106,7 +106,7 @@ function handleReady() {
  function deleteEmployee() {
     console.log('deleteEmployee func'); 
     // find idNum for targeted employee using delete button's id
-    thisID = $(this).attr('id');
+    let thisID = $(this).attr('id');
     // remove selected employee from employees array
     for (let i=0; i < employees.length; i++) {
         if (employees[i].idNum == thisID) {
@@ -123,7 +123,7 @@ function handleReady() {
 function sort() {
     console.log('sort func');
     // store clicked label id in columnLabel
-    columnLabel = $(this).attr('id');
+    let columnLabel = $(this).attr('id');
     // sort according to whichever label triggered click event
     switch (columnLabel) {
         case 'firstNameLabel':
